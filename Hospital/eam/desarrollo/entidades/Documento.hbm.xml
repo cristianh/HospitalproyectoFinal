@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="Documento" table="documento">
+
+		<id name="idDocumento" type="java.lang.String" column="id_documento">
+			<generator class="assigned" />
+		</id>
+
+		<property name="numeroDocumento" type="java.lang.String"
+			column="numero_documento" not-null="false" />
+
+		<property name="tipDocumento" type="java.lang.String"
+			column="tip_documento" not-null="false" />
+
+	</class>
+</hibernate-mapping>

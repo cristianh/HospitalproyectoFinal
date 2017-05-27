@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="Paciente" table="paciente">
+
+		<id name="idPaciente" type="java.lang.String" column="id_paciente">
+			<generator class="assigned" />
+		</id>
+
+		<property name="nombrePaciente" type="java.lang.String"
+			column="nombre_paciente" not-null="false" />
+
+		<property name="apellidoPaciente" type="java.lang.String"
+			column="apellido_paciente" not-null="false" />
+
+		<property name="direccionPaciente" type="java.lang.String"
+			column="direccion_paciente" not-null="false" />
+
+		<property name="fechaNacimientoPaciente" type="java.util.Date"
+			column="fecha_nacimiento_paciente" not-null="false" />
+
+		<property name="telefonoPaciente" type="java.lang.String"
+			column="telefono_paciente" not-null="false" />
+
+		<property name="pesoPaciente" type="java.lang.Float"
+			column="peso_paciente" not-null="false" />
+
+		<property name="numeroDocumentoPaciente" type="java.lang.String"
+			column="numero_documento_paciente" not-null="false" />
+
+		<property name="idTipoDocumento" type="java.lang.String"
+			column="id_tipo_documento" not-null="true" />
+
+		<property name="idMunicipio" type="java.lang.String"
+			column="id_municipio" not-null="true" />
+
+		<property name="idGenero" type="java.lang.String"
+			column="id_genero" not-null="true" />
+
+	</class>
+</hibernate-mapping>

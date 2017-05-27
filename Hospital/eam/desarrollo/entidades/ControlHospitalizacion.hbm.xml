@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="ControlHospitalizacion" table="control_hospitalizacion">
+
+		<property name="idControlHospitalizacion" type="java.sql.Blob"
+			column="id_control_hospitalizacion" not-null="false" />
+
+		<property name="idHospitalizacion" type="java.sql.Blob"
+			column="id_hospitalizacion" not-null="true" />
+
+		<property name="idProcedimiento" type="java.sql.Blob"
+			column="id_procedimiento" not-null="true" />
+
+	</class>
+</hibernate-mapping>

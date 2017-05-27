@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="Medico" table="medico">
+
+		<id name="idMedico" type="java.lang.String" column="id_medico">
+			<generator class="assigned" />
+		</id>
+
+		<property name="nombreMedico" type="java.lang.String"
+			column="nombre_medico" not-null="false" />
+
+		<property name="apellidoMedico" type="java.lang.String"
+			column="apellido_medico" not-null="false" />
+
+		<property name="telefonoMedico" type="java.lang.String"
+			column="telefono_medico" not-null="false" />
+
+		<property name="direccionMedico" type="java.lang.String"
+			column="direccion_medico" not-null="false" />
+
+		<property name="emailMedico" type="java.lang.String"
+			column="email_medico" not-null="false" />
+
+		<property name="telefonoEmergenciaMedico" type="java.lang.String"
+			column="telefono_emergencia_medico" not-null="false" />
+
+		<property name="fechaNacimientoMedico" type="java.util.Date"
+			column="fecha_nacimiento_medico" not-null="false" />
+
+		<property name="numeroDocumentoMedico" type="java.lang.String"
+			column="numero_documento_medico" not-null="false" />
+
+		<property name="idTipoDocumento" type="java.lang.String"
+			column="id_tipo_documento" not-null="true" />
+
+	</class>
+</hibernate-mapping>

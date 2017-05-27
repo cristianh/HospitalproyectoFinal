@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="TipoCita" table="tipo_cita">
+
+		<id name="idTipoCita" type="java.lang.String" column="id_tipo_cita">
+			<generator class="assigned" />
+		</id>
+
+		<property name="descripcionTipoCita" type="java.lang.String"
+			column="descripcion_tipo_cita" not-null="false" />
+
+	</class>
+</hibernate-mapping>

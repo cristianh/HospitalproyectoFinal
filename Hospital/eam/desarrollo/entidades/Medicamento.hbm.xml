@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="Medicamento" table="medicamento">
+
+		<id name="idMedicamento" type="java.lang.String" column="id_medicamento">
+			<generator class="assigned" />
+		</id>
+
+		<property name="nombreMedicamento" type="java.lang.String"
+			column="nombre_medicamento" not-null="false" />
+
+		<property name="marcaMedicamento" type="java.lang.String"
+			column="marca_medicamento" not-null="false" />
+
+		<property name="idFarmacia" type="java.lang.String"
+			column="id_farmacia" not-null="true" />
+
+	</class>
+</hibernate-mapping>

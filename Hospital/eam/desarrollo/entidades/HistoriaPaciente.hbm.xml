@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="HistoriaPaciente" table="historia_paciente">
+
+		<id name="idHistoriaPaciente" type="java.lang.String" column="id_historia_paciente">
+			<generator class="assigned" />
+		</id>
+
+		<property name="idPaciente" type="java.lang.String"
+			column="id_paciente" not-null="true" />
+
+	</class>
+</hibernate-mapping>

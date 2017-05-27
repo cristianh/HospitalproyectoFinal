@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="UrgenciaProcedimiento" table="urgencia_procedimiento">
+
+		<property name="idUrgencia" type="java.lang.String"
+			column="id_urgencia" not-null="true" />
+
+		<property name="idProcedimiento" type="java.sql.Blob"
+			column="id_procedimiento" not-null="true" />
+
+	</class>
+</hibernate-mapping>

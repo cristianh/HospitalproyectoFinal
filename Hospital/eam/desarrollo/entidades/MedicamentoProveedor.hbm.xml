@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="MedicamentoProveedor" table="medicamento_proveedor">
+
+		<id name="idMedicamentoProveedor" type="java.lang.String" column="id_medicamento_proveedor">
+			<generator class="assigned" />
+		</id>
+
+		<property name="cantidadMedicamento" type="java.lang.Integer"
+			column="cantidad_medicamento" not-null="false" />
+
+		<property name="loteMedicamento" type="java.lang.String"
+			column="lote_medicamento" not-null="false" />
+
+		<property name="fechaVencimento" type="java.util.Date"
+			column="fecha_vencimento" not-null="false" />
+
+		<property name="idProveedor" type="java.lang.String"
+			column="id_proveedor" not-null="true" />
+
+		<property name="idMedicamento" type="java.lang.String"
+			column="id_medicamento" not-null="true" />
+
+	</class>
+</hibernate-mapping>

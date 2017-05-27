@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteMedicos2" pageWidth="870" pageHeight="842" columnWidth="830" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="31b19a38-a2ae-4104-965e-077fcee3d05d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="20"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DATE_SETMEDICO" uuid="93404857-8a47-4b1a-9049-9e472ebd8a28">
+		<queryString language="SQL">
+			<![CDATA[SELECT  m.id_medico,m.nombre_medico,m.apellido_medico,m.telefono_medico,m.direccion_medico,m.email_medico,m.telefono_emergencia_medico,m.fecha_nacimiento_medico,m.numero_documento_medico,t.id_tipo_documento,t.tipo_documento from medico as m join tipodocumento as t on t.id_tipo_documento = m.id_tipo_documento]]>
+		</queryString>
+		<field name="id_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[id_medico]]></fieldDescription>
+		</field>
+		<field name="nombre_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[nombre_medico]]></fieldDescription>
+		</field>
+		<field name="apellido_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[apellido_medico]]></fieldDescription>
+		</field>
+		<field name="telefono_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[telefono_medico]]></fieldDescription>
+		</field>
+		<field name="direccion_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[direccion_medico]]></fieldDescription>
+		</field>
+		<field name="email_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[email_medico]]></fieldDescription>
+		</field>
+		<field name="telefono_emergencia_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[telefono_emergencia_medico]]></fieldDescription>
+		</field>
+		<field name="fecha_nacimiento_medico" class="java.sql.Date">
+			<fieldDescription><![CDATA[fecha_nacimiento_medico]]></fieldDescription>
+		</field>
+		<field name="numero_documento_medico" class="java.lang.String">
+			<fieldDescription><![CDATA[numero_documento_medico]]></fieldDescription>
+		</field>
+		<field name="id_tipo_documento" class="java.lang.String">
+			<fieldDescription><![CDATA[id_tipo_documento]]></fieldDescription>
+		</field>
+		<field name="tipo_documento" class="java.lang.String">
+			<fieldDescription><![CDATA[tipo_documento]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     medico.`id_tipo_documento` AS medico_id_tipo_documento,
+     medico.`numero_documento_medico` AS medico_numero_documento_medico,
+     medico.`fecha_nacimiento_medico` AS medico_fecha_nacimiento_medico,
+     medico.`telefono_emergencia_medico` AS medico_telefono_emergencia_medico,
+     medico.`email_medico` AS medico_email_medico,
+     medico.`direccion_medico` AS medico_direccion_medico,
+     medico.`telefono_medico` AS medico_telefono_medico,
+     medico.`apellido_medico` AS medico_apellido_medico,
+     medico.`id_medico` AS medico_id_medico
+FROM
+     `hospital`.`medico` medico]]>
+	</queryString>
+	<field name="nombreMedico" class="java.lang.String"/>
+	<field name="apellidoMedico" class="java.lang.String"/>
+	<field name="telefonoMedico" class="java.lang.String"/>
+	<field name="direccionMedico" class="java.lang.String"/>
+	<field name="emailMedico" class="java.lang.String"/>
+	<field name="telefonoEmergenciaMedico" class="java.lang.String"/>
+	<field name="fechaNacimientoMedico" class="java.util.Date"/>
+	<field name="idMedico" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="106" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="106" backcolor="#43A05F" uuid="ffa4ddc2-6d5c-4a54-8675-ec03a153a8da"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="384" y="6" width="339" height="100" forecolor="#FFFFFF" uuid="1503a5d9-3aec-4bbe-a046-4f069bd31ea2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="36" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Hospital San Pedro]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="50" y="9" width="181" height="89" uuid="33747c03-76cf-4a83-a28b-aa00def918b2"/>
+				<imageExpression><![CDATA["C:\\Users\\Casa1\\Documents\\GitHub\\Hospitalproyecto\\Imagenes\\Untitled.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="55" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="55" backcolor="#A5D68F" uuid="7a047b94-86c7-4b92-9e3b-6b9b9ffbf295"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="231" y="7" width="368" height="35" forecolor="#FFFFFF" uuid="9ab1ba73-3356-4584-9f36-c54e4afa0ca0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Medicos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="20" backcolor="#C8E6C9" uuid="5018698e-5fc0-43f8-b582-071cd9296284"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="138" y="0" width="138" height="20" uuid="d307c152-92db-48a0-9087-3d5153120e37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Nombre Medico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="138" height="20" uuid="3c41f257-aa8d-49fb-b9aa-476d713d95f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido Medico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="138" height="20" uuid="466b22f6-7592-4fc9-8d7f-d9929ca50b6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono Medico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="552" y="0" width="138" height="20" uuid="b6365149-1ee5-4510-9ea7-4eb18ae65f3c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion Medico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="690" y="0" width="140" height="20" uuid="7a3969f8-6e7f-45d4-b6f8-f468f46a569f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="0" width="138" height="20" uuid="ace6fd13-9028-410d-9759-375618d12b32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="138" y="0" width="138" height="26" uuid="558cc86d-6609-4796-89d1-f78863ad0012"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreMedico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="26" uuid="271020ea-50d4-4a5f-a753-85700da8bac5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefonoMedico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="552" y="0" width="138" height="26" uuid="191d9a76-289a-4c5c-89df-0dda71b550db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccionMedico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="690" y="0" width="138" height="26" uuid="b630c449-b93f-4a66-bcd1-d667122a0bcb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emailMedico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="138" height="26" uuid="becdedde-c789-4f26-8acd-615cd40ecf34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idMedico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="26" uuid="4cbe964b-47fa-49bc-bc3f-b3151344915a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellidoMedico}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="54" backcolor="#A5D68F" uuid="4b759185-c14a-4dce-840d-897e3797fa35"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="340" y="12" width="135" height="30" forecolor="#FFFFFF" uuid="a02678b4-c3ed-4363-b445-4ccf71772824"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ARMENIA / QUINDIO AEM - 2017]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

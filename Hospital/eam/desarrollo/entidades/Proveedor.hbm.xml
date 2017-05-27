@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="Proveedor" table="proveedor">
+
+		<id name="idProveedor" type="java.lang.String" column="id_proveedor">
+			<generator class="assigned" />
+		</id>
+
+		<property name="nombreProveedor" type="java.lang.String"
+			column="nombre_proveedor" not-null="false" />
+
+		<property name="personaContacto" type="java.lang.String"
+			column="persona_contacto" not-null="false" />
+
+		<property name="direccionProveedor" type="java.lang.String"
+			column="direccion_proveedor" not-null="false" />
+
+		<property name="telefonoProveedor" type="java.lang.String"
+			column="telefono_proveedor" not-null="false" />
+
+		<property name="emailPreveedor" type="java.lang.String"
+			column="email_preveedor" not-null="false" />
+
+	</class>
+</hibernate-mapping>

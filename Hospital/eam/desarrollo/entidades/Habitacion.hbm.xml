@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="Habitacion" table="habitacion">
+
+		<id name="idHabitacion" type="java.lang.String" column="id_habitacion">
+			<generator class="assigned" />
+		</id>
+
+		<property name="cantidadCamas" type="java.lang.Integer"
+			column="cantidad_camas" not-null="false" />
+
+		<property name="idConsultario" type="java.lang.String"
+			column="id_consultario" not-null="true" />
+
+		<property name="idCama" type="java.lang.String"
+			column="id_cama" not-null="true" />
+
+	</class>
+</hibernate-mapping>

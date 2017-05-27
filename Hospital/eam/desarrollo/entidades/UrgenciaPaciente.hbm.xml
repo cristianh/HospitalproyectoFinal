@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="UrgenciaPaciente" table="urgencia_paciente">
+
+		<property name="idUrgencia" type="java.lang.String"
+			column="id_urgencia" not-null="true" />
+
+		<property name="idPaciente" type="java.lang.String"
+			column="id_paciente" not-null="true" />
+
+	</class>
+</hibernate-mapping>

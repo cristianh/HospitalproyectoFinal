@@ -1,0 +1,17 @@
+ - Librerias externas  se encuentran en la carpeta Lib (Por si las solicita)
+
+
+-  Configuracion de la base de datos:
+
+Nombre de la Base de datos: hospital.
+User: root
+Password:1234
+
+- Script para crear la base de datos:
+Ruta : Database/hospital
+
+- Scrips utilizados para poblar la base de datos:
+ Ruta: Hospital/Scripts Sql
+
+- ¿Como visualizar el crud de paciente?
+Paquete: eam.desarollo.hospital.vistas/VentanaPacientes

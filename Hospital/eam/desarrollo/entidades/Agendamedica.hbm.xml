@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="Agendamedica" table="agendamedica">
+
+		<id name="idAgendaMedico" type="java.lang.String" column="id_agenda_medico">
+			<generator class="assigned" />
+		</id>
+
+		<property name="fechaAgenda" type="java.util.Date"
+			column="fecha_agenda" not-null="false" />
+
+		<property name="horaAgenda" type="java.sql.Time"
+			column="hora_agenda" not-null="false" />
+
+		<property name="idMedico" type="java.lang.String"
+			column="id_medico" not-null="true" />
+
+	</class>
+</hibernate-mapping>

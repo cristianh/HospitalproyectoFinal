@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="eam.desarrollo.entidades">
+
+	<class name="FormulaMedicamento" table="formula_medicamento">
+
+		<property name="idFormula" type="java.lang.String"
+			column="id_formula" not-null="true" />
+
+		<property name="idMedicamento" type="java.lang.String"
+			column="id_medicamento" not-null="true" />
+
+		<property name="cantidadMedicamentoFormula" type="java.lang.Integer"
+			column="cantidad_medicamento_formula" not-null="false" />
+
+	</class>
+</hibernate-mapping>
