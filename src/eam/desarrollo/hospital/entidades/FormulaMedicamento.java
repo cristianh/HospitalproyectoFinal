@@ -1,4 +1,6 @@
-package eam.desarrollo.entidades;
+package eam.desarrollo.hospital.entidades;
+
+
 
 import java.io.Serializable;
 

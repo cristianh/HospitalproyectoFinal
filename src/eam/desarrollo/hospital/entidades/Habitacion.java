@@ -16,19 +16,21 @@ public class Habitacion implements Serializable {
 	/** id_habitacion. */
 	private String idHabitacion;
 
-	/** cantidad_camas. */
-	private Integer cantidadCamas;
+	/** descripcionHabitacion. */
+	private String descripcionHabitacion;
 
 	/** consultorio. */
 	private Consultorio consultorio;
 
-	/** cama. */
-	private Cama cama;
 
-	/**
-	 * Constructor.
-	 */
-	public Habitacion() {
+
+	
+
+	public Habitacion(String idHabitacion, String descripcionHabitacion, Consultorio consultorio) {
+		super();
+		this.idHabitacion = idHabitacion;
+		this.descripcionHabitacion = descripcionHabitacion;
+		this.consultorio = consultorio;
 	}
 
 	/**
@@ -56,19 +58,7 @@ public class Habitacion implements Serializable {
 	 * @param cantidadCamas
 	 *            cantidad_camas
 	 */
-	public void setCantidadCamas(Integer cantidadCamas) {
-		this.cantidadCamas = cantidadCamas;
-	}
-
-	/**
-	 * Get the cantidad_camas.
-	 * 
-	 * @return cantidad_camas
-	 */
-	public Integer getCantidadCamas() {
-		return this.cantidadCamas;
-	}
-
+	
 	/**
 	 * Set the consultorio.
 	 * 
@@ -88,23 +78,13 @@ public class Habitacion implements Serializable {
 		return this.consultorio;
 	}
 
-	/**
-	 * Set the cama.
-	 * 
-	 * @param cama
-	 *            cama
-	 */
-	public void setCama(Cama cama) {
-		this.cama = cama;
+	
+	public String getDescripcionHabitacion() {
+		return descripcionHabitacion;
 	}
 
-	/**
-	 * Get the cama.
-	 * 
-	 * @return cama
-	 */
-	public Cama getCama() {
-		return this.cama;
+	public void setDescripcionHabitacion(String descripcionHabitacion) {
+		this.descripcionHabitacion = descripcionHabitacion;
 	}
 
 	/**

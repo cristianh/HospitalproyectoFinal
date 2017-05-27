@@ -27,8 +27,16 @@ public class EstadoCama implements Serializable {
 	/**
 	 * Constructor.
 	 */
+	
+	
 	public EstadoCama() {
 		this.camaSet = new HashSet<Cama>();
+	}
+
+	public EstadoCama(String idEstadoCama, String descripcionEstadoCama) {
+		super();
+		this.idEstadoCama = idEstadoCama;
+		this.descripcionEstadoCama = descripcionEstadoCama;
 	}
 
 	/**

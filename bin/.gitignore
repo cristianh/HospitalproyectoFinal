@@ -25,6 +25,15 @@
 /loading_1.gif
 /lock.png
 /login_user_password_username.png
+/logoeam.png
+/lupa.png
+/male.png
+/server-13.png
+/server-14.png
+/server-18.png
+/server-3.png
+/server-9.png
+/server.png
 /com.fasterxml.jackson.core.jar
 /com.fasterxml.jackson.databind.jar
 /com.lowagie.text-2.1.7.jar
@@ -37,7 +46,6 @@
 /commons-logging-1.2-javadoc.jar
 /commons-logging-1.2.jar
 /eam/
-/jasperreports-0.6.3.jar/
 /jasperreports-5.6.0.jar
 /jcalendar-1.4.jar
 /jgoodies-common-1.2.0.jar
@@ -45,16 +53,7 @@
 /jgoodies-forms-1.8.0.jar
 /jgoodies-looks-2.4.1.jar
 /junit-4.6.jar
-/logoeam.png
-/lupa.png
-/male.png
 /mysql-connector-java-3.0.17-ga-bin.jar
-/server-13.png
-/server-14.png
-/server-18.png
-/server-3.png
-/server-9.png
-/server.png
 /usuario (1).png
 /usuario (2).png
 /usuario (3).png

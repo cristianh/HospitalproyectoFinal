@@ -20,6 +20,8 @@ public class Cama implements Serializable {
 
 	/** estado_cama. */
 	private EstadoCama estadoCama;
+	
+	private Habitacion habitacion;
 
 	/** The set of habitacion. */
 	private Set<Habitacion> habitacionSet;
@@ -27,9 +29,24 @@ public class Cama implements Serializable {
 	/**
 	 * Constructor.
 	 */
+	
+	
 	public Cama() {
 		this.habitacionSet = new HashSet<Habitacion>();
 	}
+	
+	
+	
+
+	public Cama(String idCama, EstadoCama estadoCama, Habitacion habitacion) {
+		super();
+		this.idCama = idCama;
+		this.estadoCama = estadoCama;
+		this.habitacion = habitacion;
+	}
+
+
+
 
 	/**
 	 * Set the id_cama.
@@ -68,6 +85,22 @@ public class Cama implements Serializable {
 	public EstadoCama getEstadoCama() {
 		return this.estadoCama;
 	}
+	
+	
+
+	public Habitacion getHabitacion() {
+		return habitacion;
+	}
+
+
+
+
+	public void setHabitacion(Habitacion habitacion) {
+		this.habitacion = habitacion;
+	}
+
+
+
 
 	/**
 	 * Set the set of the habitacion.
