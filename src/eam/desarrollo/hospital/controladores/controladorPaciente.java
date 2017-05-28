@@ -10,23 +10,34 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.peer.KeyboardFocusManagerPeer;
+import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import com.mysql.jdbc.Connection;
+
 import eam.desarollo.hospital.utils.UtilsForms;
 import eam.desarollo.hospital.vistas.VentanaPacientes;
 import eam.desarrollo.hospital.DAO.DAOPaciente;
+import eam.desarrollo.hospital.conexion.Conexion;
 import eam.desarrollo.hospital.entidades.Genero;
 import eam.desarrollo.hospital.entidades.Municipio;
 import eam.desarrollo.hospital.entidades.Paciente;
+import eam.desarrollo.hospital.entidades.Proveedor;
 import eam.desarrollo.hospital.entidades.Tipodocumento;
+import eam.desarrollo.hospital.reports.ReportExporter;
+import net.sf.jasperreports.engine.JRException;
 
 public class controladorPaciente implements ActionListener {
 	public VentanaPacientes ventanapaciente;
@@ -56,7 +67,8 @@ public class controladorPaciente implements ActionListener {
 			this.ventanapaciente.btnRegistrar.addActionListener(this);
 			this.ventanapaciente.btnBuscar.addActionListener(this);
 			this.ventanapaciente.btnEliminar.addActionListener(this);
-			this.ventanapaciente.btnActualizar.addActionListener(this);			
+			this.ventanapaciente.btnActualizar.addActionListener(this);	
+			this.ventanapaciente.mntmGenerarReporte.addActionListener(this);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -92,12 +104,12 @@ public class controladorPaciente implements ActionListener {
 
 	public boolean verificarformulario() {
 		 if(this.ventanapaciente.JTFNumeroDocumentoPaciente.getText().toString().length()<10){
-			 JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "El numero de documento es muy corto por favor verifiquelo", "Info",
+			 JOptionPane.showMessageDialog(null, "El numero de documento es muy corto por favor verifiquelo", "Info",
 						JOptionPane.INFORMATION_MESSAGE);
 			 return false;
 		 }
 		 else if(this.ventanapaciente.JTFTelefonoPaciente.getText().toString().length()<7){
-			 JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "El numero de telefono es muy corto por favor verifiquelo", "Info",
+			 JOptionPane.showMessageDialog(null, "El numero de telefono es muy corto por favor verifiquelo", "Info",
 						JOptionPane.INFORMATION_MESSAGE);
 			 return false;
 		 }else
@@ -186,9 +198,9 @@ public class controladorPaciente implements ActionListener {
 							.setSelectedIndex(Integer.parseInt(nuevo_paciente.getTipodocumento().getIdTipoDocumento()));
 					ventanapaciente.dateChooser.setDate(nuevo_paciente.getFechaNacimientoPaciente());
 					CargarformularioPaciente(nuevo_paciente);
-					JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Usuario encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario no encontrado", "Info",
+					JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Info",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			} catch (Exception e) {
@@ -200,7 +212,7 @@ public class controladorPaciente implements ActionListener {
 			try {
 				Midao.eliminar(ventanapaciente.JTFNumeroDocumentoPaciente.getText());
 				Limpiarformulario();
-				JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario eliminado", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Usuario eliminado", "Info", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -230,12 +242,55 @@ public class controladorPaciente implements ActionListener {
 			try {
 				Midao.actualizar(nuevo_paciente);
 				Limpiarformulario();
-				JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Usuario actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
+			break;
+			
+		case "Generar reporte":
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Specify a file to save");
+			
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			int userSelection = fileChooser.showSaveDialog(ventanapaciente.frmVentanaPaciente);
+			File fileToSave = fileChooser.getSelectedFile();
+			if (userSelection == JFileChooser.APPROVE_OPTION) {
+				
+				try {
+			    	Paciente paciente = null;
+			    	
+			    	java.sql.ResultSet rs = null;
+			    	Connection con = Conexion.getConexion();
+					java.sql.PreparedStatement stm;
+					String sql = "SELECT id_paciente,nombre_paciente,apellido_paciente,direccion_paciente,fecha_nacimiento_paciente,telefono_paciente,peso_paciente,numero_documento_paciente from paciente";
+					stm = con.prepareStatement(sql);
+					rs = stm.executeQuery();
+					
+					ArrayList<Paciente> listMed = new ArrayList<>();
+					
+					while (rs.next()) {
+						listMed.add(new Paciente(rs.getString("id_paciente"),rs.getString("nombre_paciente"),rs.getString("apellido_paciente"),rs.getString("direccion_paciente"),rs.getDate("fecha_nacimiento_paciente"),rs.getString("telefono_paciente"),rs.getFloat("peso_paciente"),rs.getString("numero_documento_paciente"),null,null,null));
+						
+						
+					}
+					
+					System.out.println(listMed);
+					
+					Map<String, Object> parameters = new HashMap<String, Object>();		
+					ReportExporter reportExporter = new ReportExporter();
+					reportExporter.export("C:/Users/Paula/Pictures/Camera Roll/HospitalproyectoFinal/reportes/ReportePaciente.jasper", fileToSave.getAbsolutePath(), parameters,listMed,"Reporte paciente");
+
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					System.out.println(e1.getMessage());
+				} catch (JRException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 			break;
 
 		}

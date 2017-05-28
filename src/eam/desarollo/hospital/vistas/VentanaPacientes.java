@@ -31,14 +31,13 @@ import eam.desarrollo.hospital.entidades.Tipodocumento;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
-public class VentanaPacientes extends javax.swing.JFrame{
+public class VentanaPacientes  {
 	
 	
 	/**
@@ -55,10 +54,7 @@ public class VentanaPacientes extends javax.swing.JFrame{
 				}
 			}
 		});
-		 
 	}
-	
-	
 
 	/**
 	 * Create the application.
@@ -79,11 +75,6 @@ public class VentanaPacientes extends javax.swing.JFrame{
 		frmVentanaPaciente.setBounds(100, 100, 623, 391);
 		frmVentanaPaciente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmVentanaPaciente.getContentPane().setLayout(null);
-		
-		JLabel lblPacientes = new JLabel("Ventana Pacientes");
-		lblPacientes.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPacientes.setBounds(216, 11, 148, 22);
-		frmVentanaPaciente.getContentPane().add(lblPacientes);
 		
 		JLabel LbPaciente = new JLabel("Paciente No.");
 		LbPaciente.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -199,6 +190,7 @@ public class VentanaPacientes extends javax.swing.JFrame{
 		//JButton btnRegistrar = new JButton("REGISTRAR");
 		btnRegistrar.setBounds(11, 281, 130, 39);
 		frmVentanaPaciente.getContentPane().add(btnRegistrar);
+		
 		btnBuscar.setIcon(new ImageIcon("C:\\Users\\Casa1\\Documents\\GitHub\\Hospitalproyecto\\Imagenes\\usuario (2).png"));
 		
 		//JButton btnBuscar = new JButton("BUSCAR");
@@ -214,6 +206,15 @@ public class VentanaPacientes extends javax.swing.JFrame{
 		//JButton btnActualizar = new JButton("ACTUALIZAR");
 		btnActualizar.setBounds(434, 281, 130, 39);
 		frmVentanaPaciente.getContentPane().add(btnActualizar);
+		
+		
+		frmVentanaPaciente.setJMenuBar(menuBar);
+		
+		
+		menuBar.add(mnReportes);
+		
+		
+		mnReportes.add(mntmGenerarReporte);
 		
 	}	
 
@@ -234,6 +235,7 @@ public class VentanaPacientes extends javax.swing.JFrame{
 	public JButton btnEliminar = new JButton("ELIMINAR");
 	public JButton btnActualizar = new JButton("ACTUALIZAR");
 	public static controladorPaciente micontroladorpaciente;
-	
-	
+	public JMenuBar menuBar = new JMenuBar();
+	public JMenu mnReportes = new JMenu("Reportes");
+	public JMenuItem mntmGenerarReporte = new JMenuItem("Generar reporte");
 }
