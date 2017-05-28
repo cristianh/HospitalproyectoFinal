@@ -110,12 +110,12 @@ public class controladorMedico  implements ActionListener{
 	
 	public boolean verificarformulario() {
 		 if(this.ventanamedico.JTFNumerodocumento.getText().toString().length()<10){
-			 JOptionPane.showMessageDialog(null, "El numero de documento es muy corto por favor verifiquelo", "Info",
+			 JOptionPane.showMessageDialog(ventanamedico.frmMedico, "El numero de documento es muy corto por favor verifiquelo", "Info",
 						JOptionPane.INFORMATION_MESSAGE);
 			 return false;
 		 }
 		 else if(this.ventanamedico.JTFTelefonomedico.getText().toString().length()<7){
-			 JOptionPane.showMessageDialog(null, "El numero de telefono es muy corto por favor verifiquelo", "Info",
+			 JOptionPane.showMessageDialog(ventanamedico.frmMedico, "El numero de telefono es muy corto por favor verifiquelo", "Info",
 						JOptionPane.INFORMATION_MESSAGE);
 			 return false;
 		 }else
@@ -180,9 +180,9 @@ public class controladorMedico  implements ActionListener{
 							.setSelectedIndex(Integer.parseInt(nuevo_medico.getTipodocumento().getIdTipoDocumento()));
 					ventanamedico.dateChooser.setDate(nuevo_medico.getFechaNacimientoMedico());
 					CargarformularioMedico(nuevo_medico);
-					JOptionPane.showMessageDialog(null, "Usuario encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(ventanamedico.frmMedico, "Usuario encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Info",
+					JOptionPane.showMessageDialog(ventanamedico.frmMedico, "Usuario no encontrado", "Info",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			} catch (Exception e) {
@@ -217,7 +217,7 @@ public class controladorMedico  implements ActionListener{
 			try {
 				Midao.actualizar(nuevo_medico);
 				Limpiarformulario();
-				JOptionPane.showMessageDialog(null, "Usuario actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(ventanamedico.frmMedico, "Usuario actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -274,7 +274,7 @@ public class controladorMedico  implements ActionListener{
 								
 //					FIN
 					ReportExporter reportExporter = new ReportExporter();
-					reportExporter.export("ReporteMedicos2.jasper", fileToSave.getAbsolutePath(), parameters,listMed);
+					reportExporter.export("ReporteMedicos2.jasper", fileToSave.getAbsolutePath(), parameters,listMed,"ReporteMedico2");
 
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

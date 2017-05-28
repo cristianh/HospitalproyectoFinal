@@ -15,27 +15,28 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 public class ReportExporter {
 
-	public void export(String reportName, String folderPath, Map<String, Object> parameters, ArrayList<?> list)
+	public void export(String reportName, String folderPath, Map<String, Object> parameters, ArrayList<?> list,String nombresalida)
 			throws JRException {
 		
 		//String sourceFileName = this.getClass().getClassLoader().getResource(e).getPath();
-		String sourceFileName = "C:/Users/Casa1/Documents/GitHub/Hospitalproyecto/reportes/ReporteMedicos2.jasper";
-		System.out.println(sourceFileName);
+		//String sourceFileName = "C:/Users/Casa1/Documents/GitHub/Hospitalproyecto/reportes/ReporteMedicos2.jasper";
+		//String sourceFileName = "C:/Users/Paula/Pictures/Camera Roll/HospitalproyectoFinal/reportes/ReporteMedicos2.jasper";
+		//System.out.println(sourceFileName);
 		String printFileName = null;
 		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(list);
 
 		try {
-			printFileName = JasperFillManager.fillReportToFile(sourceFileName, parameters, beanColDataSource);
+			printFileName = JasperFillManager.fillReportToFile(reportName, parameters, beanColDataSource);
 			if (printFileName != null) {
 				/**
 				 * 1- export to PDF
 				 */
-				JasperExportManager.exportReportToPdfFile(printFileName, folderPath + "/ReporteMedico2.pdf");
+				JasperExportManager.exportReportToPdfFile(printFileName, folderPath + "/"+ nombresalida + ".pdf");
 
 				/**
 				 * 2- export to HTML
 				 */
-				JasperExportManager.exportReportToHtmlFile(printFileName,folderPath+"/ReporteMedico2.html");
+				JasperExportManager.exportReportToHtmlFile(printFileName,folderPath+"/"+ nombresalida +  ".html");
 
 			}
 		} catch (JRException e) {

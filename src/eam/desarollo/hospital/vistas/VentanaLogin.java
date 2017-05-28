@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
@@ -17,17 +18,25 @@ import javax.swing.JButton;
 import java.awt.Panel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
+import eam.desarrollo.hospital.DAO.DAOLogin;
+import eam.desarrollo.hospital.entidades.Login;
+
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaLogin {
 
 	private JFrame frmLogin;
-	private JPasswordField passwordField;
+	private JPasswordField JTFPassword;
 	private JTextField JTFUsuario;
+	public DAOLogin daologin= new DAOLogin();
+	public VentanaPrincipal ventanaprincipal;
 
 	/**
 	 * Launch the application.
@@ -91,11 +100,48 @@ public class VentanaLogin {
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JButton btnIngresar = new JButton("INGRESAR");
+		btnIngresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String password = new String(JTFPassword.getPassword());
+				
+				Login login=daologin.ingresarSistema(JTFUsuario.getText(),password);
+				System.out.println(login);
+				
+				if(login!=null){
+					JOptionPane.showMessageDialog(frmLogin, "BIENVENIDO", "Info", JOptionPane.INFORMATION_MESSAGE);
+					
+					
+					switch(login.getIdTipoUsuario().tipoUsuario){
+					case "admin":
+						ventanaprincipal=new VentanaPrincipal();
+						ventanaprincipal.frmVentanaPrincipal.setVisible(true);
+					break;
+					case "medico":
+						ventanaprincipal=new VentanaPrincipal();
+						ventanaprincipal.frmVentanaPrincipal.setVisible(true);
+						ventanaprincipal.mnPaciente.setVisible(false);
+						ventanaprincipal.mnCama.setVisible(false);
+					break;
+					case "usuario":
+						ventanaprincipal=new VentanaPrincipal();
+						ventanaprincipal.frmVentanaPrincipal.setVisible(true);
+						ventanaprincipal.mnFarmacia.setVisible(false);
+					break;
+					}
+				}else
+				{
+					JOptionPane.showMessageDialog(frmLogin, "Eror al ingresar", "Error", JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				frmLogin.dispose();
+				
+			}
+		});
 		
 		JTFUsuario = new JTextField();
 		JTFUsuario.setColumns(10);
 		
-		passwordField = new JPasswordField();
+		JTFPassword = new JPasswordField();
 		
 		JLabel lblBienvenido = new JLabel("BIENVENIDO");
 		lblBienvenido.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 19));
@@ -104,8 +150,7 @@ public class VentanaLogin {
 		lblRegistrarme.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				VentanaRegistrarLogin ventanaregistarlogin = new VentanaRegistrarLogin();
-						
+				VentanaRegistrarLogin ventanaregistarlogin = new VentanaRegistrarLogin();		
 			}
 		});
 		lblRegistrarme.setForeground(Color.BLUE);
@@ -139,7 +184,7 @@ public class VentanaLogin {
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(10)
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+								.addComponent(JTFPassword, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
 								.addComponent(JTFUsuario, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(33)
@@ -166,7 +211,7 @@ public class VentanaLogin {
 									.addGap(73)
 									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblPassword, Alignment.TRAILING)
-										.addComponent(passwordField, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(JTFPassword, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 									.addGap(79)))
 							.addGap(26)
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
@@ -176,7 +221,7 @@ public class VentanaLogin {
 							.addComponent(btnIngresar)
 							.addGap(36))))
 		);
-		gl_panel.linkSize(SwingConstants.HORIZONTAL, new Component[] {JTFUsuario, passwordField});
+		gl_panel.linkSize(SwingConstants.HORIZONTAL, new Component[] {JTFUsuario, JTFPassword});
 		panel.setLayout(gl_panel);
 		frmLogin.getContentPane().setLayout(groupLayout);
 	}

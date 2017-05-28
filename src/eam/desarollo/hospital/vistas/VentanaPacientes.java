@@ -31,10 +31,14 @@ import eam.desarrollo.hospital.entidades.Tipodocumento;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-public class VentanaPacientes  {
+public class VentanaPacientes extends javax.swing.JFrame{
 	
 	
 	/**
@@ -51,7 +55,10 @@ public class VentanaPacientes  {
 				}
 			}
 		});
+		 
 	}
+	
+	
 
 	/**
 	 * Create the application.
@@ -210,7 +217,7 @@ public class VentanaPacientes  {
 		
 	}	
 
-	private JFrame frmVentanaPaciente;
+	public JFrame frmVentanaPaciente;
 	public JTextField JTFIdPaciente;
 	public JTextField JTFNombrePaciente;
 	public JTextField JTFApellidoPaciente;
@@ -227,4 +234,6 @@ public class VentanaPacientes  {
 	public JButton btnEliminar = new JButton("ELIMINAR");
 	public JButton btnActualizar = new JButton("ACTUALIZAR");
 	public static controladorPaciente micontroladorpaciente;
+	
+	
 }

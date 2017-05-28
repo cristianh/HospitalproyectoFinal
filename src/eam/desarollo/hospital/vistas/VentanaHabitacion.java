@@ -97,7 +97,7 @@ public class VentanaHabitacion {
 		btnEliminar.setBounds(317, 160, 89, 23);
 		frmHabitacion.getContentPane().add(btnEliminar);
 	}
-	private JFrame frmHabitacion;
+	public JFrame frmHabitacion;
 	public JButton btnRegistrar= new JButton("REGISTRAR");
 	public JButton btnBuscar= new JButton("BUSCAR");
 	public JButton btnEliminar = new JButton("ELIMINAR");

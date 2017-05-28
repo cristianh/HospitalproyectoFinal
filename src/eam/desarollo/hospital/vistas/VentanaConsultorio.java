@@ -121,7 +121,7 @@ public class VentanaConsultorio {
 		frmConsultorios.getContentPane().add(btnActualizarTabla);
 	}
 	
-	private JFrame frmConsultorios;
+	public JFrame frmConsultorios;
 	public JTextField JTFConsultorio = new JTextField();
 	public JLabel lblConsultorio = new JLabel("Consultorio");
 	public JLabel lblNewLabel = new JLabel("Descripcion");

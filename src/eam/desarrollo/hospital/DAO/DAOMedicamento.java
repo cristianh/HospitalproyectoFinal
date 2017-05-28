@@ -47,7 +47,7 @@ public class DAOMedicamento implements IntMedicamento {
 	@Override
 	public Medicamento buscar(String identificacion) throws Exception {
 		Connection con = Conexion.getConexion();
-		String sql="SELECT m.id_medicamento,m.nombre_medicamento,m.marca_medicamento,m.id_farmacia,f.id_farmacia,f.nombre_farmacia,f.persona_a_cargo,f.telefono_farmacia from medicamento as m join farmacia as f on m.id_farmacia=f.id_farmacia where id_medicamento=?";
+		String sql="SELECT l.id,l.user,l.password,l.estado,l.id_tipo_usuario,t.tipo_usuario FROM login as l join tipousuario as t on l.id_tipo_usuario= t.id_tipo_usuario where user=? and password=?";
 	
 		
 		java.sql.PreparedStatement pstmt = con.prepareStatement(sql);

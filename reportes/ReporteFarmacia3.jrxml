@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteMedicos2" pageWidth="870" pageHeight="842" columnWidth="830" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="31b19a38-a2ae-4104-965e-077fcee3d05d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="122"/>
+	<property name="ireport.y" value="4"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="DATE_SETMEDICO" uuid="93404857-8a47-4b1a-9049-9e472ebd8a28">
+		<queryString language="SQL">
+			<![CDATA[SELECT  m.id_medico,m.nombre_medico,m.apellido_medico,m.telefono_medico,m.direccion_medico,m.email_medico,m.telefono_emergencia_medico,m.fecha_nacimiento_medico,m.numero_documento_medico,t.id_tipo_documento,t.tipo_documento from medico as m join tipodocumento as t on t.id_tipo_documento = m.id_tipo_documento]]>
+		</queryString>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     medico.`id_tipo_documento` AS medico_id_tipo_documento,
+     medico.`numero_documento_medico` AS medico_numero_documento_medico,
+     medico.`fecha_nacimiento_medico` AS medico_fecha_nacimiento_medico,
+     medico.`telefono_emergencia_medico` AS medico_telefono_emergencia_medico,
+     medico.`email_medico` AS medico_email_medico,
+     medico.`direccion_medico` AS medico_direccion_medico,
+     medico.`telefono_medico` AS medico_telefono_medico,
+     medico.`apellido_medico` AS medico_apellido_medico,
+     medico.`id_medico` AS medico_id_medico
+FROM
+     `hospital`.`medico` medico]]>
+	</queryString>
+	<field name="idFarmacia" class="java.lang.String"/>
+	<field name="nombreFarmacia" class="java.lang.String"/>
+	<field name="personaACargo" class="java.lang.String"/>
+	<field name="telefonoFarmacia" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="106" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="106" backcolor="#BA68C8" uuid="ffa4ddc2-6d5c-4a54-8675-ec03a153a8da"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="310" y="6" width="339" height="100" forecolor="#FFFFFF" uuid="1503a5d9-3aec-4bbe-a046-4f069bd31ea2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="36" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Hospital San Pedro]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="50" y="9" width="181" height="89" uuid="33747c03-76cf-4a83-a28b-aa00def918b2"/>
+				<imageExpression><![CDATA["C:/Users/Paula/Pictures/Camera Roll/HospitalproyectoFinal/Imagenes/Untitled.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="55" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="55" backcolor="#CE93D8" uuid="7a047b94-86c7-4b92-9e3b-6b9b9ffbf295"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="231" y="7" width="368" height="35" forecolor="#FFFFFF" uuid="9ab1ba73-3356-4584-9f36-c54e4afa0ca0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="24" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Farmacia]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="26" backcolor="#E1BEE7" uuid="5018698e-5fc0-43f8-b582-071cd9296284"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="138" height="26" uuid="273acd6f-1591-445d-b19a-2d06f76ca714"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="2" width="138" height="24" uuid="d8ec2cda-7032-4685-a822-f8f7e77b7173"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Farmacia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="139" height="26" uuid="59ac7e5e-453c-4463-99bb-4f111d9a2e44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Persona A Cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="6" width="113" height="20" uuid="b64feafa-30dd-4c50-8a0f-edf8c1ada56a"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono Farmacia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="66" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="26" uuid="8e4eb8d9-c399-4096-ba00-224e988472dd"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="138" height="26" uuid="bbf9787e-8208-4ea6-be9a-820415578762"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idFarmacia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="26" uuid="6f774ba4-6d00-4fd2-8faf-f120d13d81f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombreFarmacia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="139" height="26" uuid="dfcc5171-89a7-44f5-8b82-edd779c211b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{personaACargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="0" width="184" height="26" uuid="be4f547f-24af-44d2-b0f2-5610aa19a405"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{telefonoFarmacia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="830" height="54" backcolor="#CE93D8" uuid="4b759185-c14a-4dce-840d-897e3797fa35"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="340" y="12" width="135" height="30" forecolor="#FFFFFF" uuid="a02678b4-c3ed-4363-b445-4ccf71772824"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ARMENIA / QUINDIO EAM - 2017]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

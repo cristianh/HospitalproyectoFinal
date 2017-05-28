@@ -4,12 +4,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import com.mysql.jdbc.Connection;
 
 import eam.desarollo.hospital.vistas.ventanaFarmacia;
 import eam.desarrollo.hospital.DAO.DAOFarmacia;
+import eam.desarrollo.hospital.conexion.Conexion;
 import eam.desarrollo.hospital.entidades.Farmacia;
+import eam.desarrollo.hospital.entidades.Medico;
+import eam.desarrollo.hospital.entidades.Tipodocumento;
+import eam.desarrollo.hospital.reports.ReportExporter;
+import net.sf.jasperreports.engine.JRException;
 
 
 
@@ -32,6 +45,7 @@ public class controladorFarmacia implements ActionListener,MouseListener{
 			this.ventanaFarmacia.btnBuscar.addActionListener(this);
 			this.ventanaFarmacia.btnEliminar.addActionListener(this);
 			this.ventanaFarmacia.btnModificar.addActionListener(this);
+			this.ventanaFarmacia.mntmGenerarReporte.addActionListener(this);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -150,6 +164,50 @@ public class controladorFarmacia implements ActionListener,MouseListener{
 			} catch (Exception e1) {
 				
 				System.out.println(e1.getMessage());
+			}
+			break;
+			
+		case "Generar reporte":
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Specify a file to save");
+			
+			fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			int userSelection = fileChooser.showSaveDialog(ventanaFarmacia.frame);
+			File fileToSave = fileChooser.getSelectedFile();
+			if (userSelection == JFileChooser.APPROVE_OPTION) {
+				
+				try {
+			    	Farmacia farmacia = null;
+			    	
+			    	java.sql.ResultSet rs = null;
+			    	Connection con = Conexion.getConexion();
+					java.sql.PreparedStatement stm;
+					String sql = "SELECT id_farmacia,nombre_farmacia,persona_a_cargo,telefono_farmacia from farmacia";
+					stm = con.prepareStatement(sql);
+					rs = stm.executeQuery();
+					
+					ArrayList<Farmacia> listMed = new ArrayList<>();
+					
+					while (rs.next()) {
+						listMed.add(new Farmacia(rs.getString("id_farmacia"),rs.getString("nombre_farmacia"),rs.getString("persona_a_cargo"),rs.getString("telefono_farmacia")));
+						
+						
+					}
+					
+					System.out.println(listMed);
+					
+					Map<String, Object> parameters = new HashMap<String, Object>();
+//					
+					ReportExporter reportExporter = new ReportExporter();
+					reportExporter.export("C:/Users/Paula/Pictures/Camera Roll/HospitalproyectoFinal/reportes/ReporteFarmacia3.jasper", fileToSave.getAbsolutePath(), parameters,listMed,"Reporte farmacia");
+
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					System.out.println(e1.getMessage());
+				} catch (JRException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			break;
 			/**

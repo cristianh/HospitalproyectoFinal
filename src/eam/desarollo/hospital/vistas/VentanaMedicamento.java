@@ -107,7 +107,7 @@ public class VentanaMedicamento {
 		btnEliminar.setBounds(319, 167, 89, 23);
 		frame.getContentPane().add(btnEliminar);
 	}
-	private JFrame frame;
+	public JFrame frame;
 	public JButton btnRegistrar= new JButton("REGISTRAR");
 	public JButton btnBuscar= new JButton("BUSCAR");
 	public JButton btnEliminar = new JButton("ELIMINAR");

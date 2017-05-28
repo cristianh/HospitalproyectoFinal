@@ -84,7 +84,7 @@ public class controladorMedicamentoProveedor implements ActionListener {
 				Limpiarformulario();
 				
 			} else {
-				JOptionPane.showMessageDialog(null, "Por favor ingrese sus datos", "Info",
+				JOptionPane.showMessageDialog(ventanamedicamentoproveedor.frame, "Por favor ingrese sus datos", "Info",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 
@@ -96,10 +96,10 @@ public class controladorMedicamentoProveedor implements ActionListener {
 				if (!verificarVacio()) {
 					Midao.eliminar(ventanamedicamentoproveedor.JTFId.getText());
 					Limpiarformulario();
-					JOptionPane.showMessageDialog(null, "Medicamento eliminado", "Info",
+					JOptionPane.showMessageDialog(ventanamedicamentoproveedor.frame, "Medicamento eliminado", "Info",
 							JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "Llene el campo requerido");
+					JOptionPane.showMessageDialog(ventanamedicamentoproveedor.frame, "Llene el campo requerido");
 				}
 
 			} catch (Exception e1) {
@@ -126,7 +126,7 @@ public class controladorMedicamentoProveedor implements ActionListener {
 				Midao.actualizar(nuevo_medicamento_proveedor);
 			
 				Limpiarformulario();
-				JOptionPane.showMessageDialog(null, "Medicamento actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(ventanamedicamentoproveedor.frame, "Medicamento actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -147,9 +147,9 @@ public class controladorMedicamentoProveedor implements ActionListener {
 							Integer.parseInt(nuevo_medicamento_proveedor.getMedicamento().getIdMedicamento()));
 					ventanamedicamentoproveedor.JCBProveedor.setSelectedIndex(Integer.parseInt(nuevo_medicamento_proveedor.getProveedor().getIdProveedor()));
 					
-					JOptionPane.showMessageDialog(null, "Medicamento encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(ventanamedicamentoproveedor.frame, "Medicamento encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "Medicamento no encontrado", "Info",
+					JOptionPane.showMessageDialog(ventanamedicamentoproveedor.frame, "Medicamento no encontrado", "Info",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			} catch (Exception e1) {

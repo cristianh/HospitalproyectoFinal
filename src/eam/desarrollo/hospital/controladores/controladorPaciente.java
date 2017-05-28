@@ -92,12 +92,12 @@ public class controladorPaciente implements ActionListener {
 
 	public boolean verificarformulario() {
 		 if(this.ventanapaciente.JTFNumeroDocumentoPaciente.getText().toString().length()<10){
-			 JOptionPane.showMessageDialog(null, "El numero de documento es muy corto por favor verifiquelo", "Info",
+			 JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "El numero de documento es muy corto por favor verifiquelo", "Info",
 						JOptionPane.INFORMATION_MESSAGE);
 			 return false;
 		 }
 		 else if(this.ventanapaciente.JTFTelefonoPaciente.getText().toString().length()<7){
-			 JOptionPane.showMessageDialog(null, "El numero de telefono es muy corto por favor verifiquelo", "Info",
+			 JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "El numero de telefono es muy corto por favor verifiquelo", "Info",
 						JOptionPane.INFORMATION_MESSAGE);
 			 return false;
 		 }else
@@ -186,9 +186,9 @@ public class controladorPaciente implements ActionListener {
 							.setSelectedIndex(Integer.parseInt(nuevo_paciente.getTipodocumento().getIdTipoDocumento()));
 					ventanapaciente.dateChooser.setDate(nuevo_paciente.getFechaNacimientoPaciente());
 					CargarformularioPaciente(nuevo_paciente);
-					JOptionPane.showMessageDialog(null, "Usuario encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario encontrado", "Info", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "Usuario no encontrado", "Info",
+					JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario no encontrado", "Info",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			} catch (Exception e) {
@@ -200,7 +200,7 @@ public class controladorPaciente implements ActionListener {
 			try {
 				Midao.eliminar(ventanapaciente.JTFNumeroDocumentoPaciente.getText());
 				Limpiarformulario();
-				JOptionPane.showMessageDialog(null, "Usuario eliminado", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario eliminado", "Info", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -230,7 +230,7 @@ public class controladorPaciente implements ActionListener {
 			try {
 				Midao.actualizar(nuevo_paciente);
 				Limpiarformulario();
-				JOptionPane.showMessageDialog(null, "Usuario actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(ventanapaciente.frmVentanaPaciente, "Usuario actualizado", "Info", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

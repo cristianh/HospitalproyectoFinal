@@ -11,6 +11,9 @@ import eam.desarrollo.hospital.controladores.controladorProveedor;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class VentanaProveedor {
 
@@ -118,8 +121,14 @@ public class VentanaProveedor {
 		JTFID.setBounds(77, 33, 137, 20);
 		frame.getContentPane().add(JTFID);
 		JTFID.setColumns(10);
+		
+		frame.setJMenuBar(menuBar);
+		
+		menuBar.add(mnReportes);
+		
+		mnReportes.add(mntmGenerarReporte);
 	}
-	private JFrame frame;
+	public JFrame frame = new JFrame();
 	public controladorProveedor micontroladorProvedor;
 	
 	public JTextField JTFEmpresa= new JTextField();
@@ -132,4 +141,7 @@ public class VentanaProveedor {
 	public	JButton Eliminar = new JButton("Eliminar");
 	public	JButton Actualizar = new JButton("Actualizar");
 	public JTextField JTFID = new JTextField();
+	public JMenuBar menuBar = new JMenuBar();
+	public JMenu mnReportes = new JMenu("Reportes");
+	public JMenuItem mntmGenerarReporte = new JMenuItem("Generar reporte");
 }

@@ -109,7 +109,7 @@ public class VentanaFormulaMedicamento {
 		btnEliminar.setBounds(319, 241, 89, 23);
 		frame.getContentPane().add(btnEliminar);
 	}
-	private JFrame frame;
+	public JFrame frame;
 	public JTextField JTFID = new JTextField();
 	public JTextField JTFCantidad = new JTextField();
 	public JComboBox JCBFormula = new JComboBox();

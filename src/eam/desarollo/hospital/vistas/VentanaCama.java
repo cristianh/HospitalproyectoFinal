@@ -101,7 +101,7 @@ public class VentanaCama {
 		JCBHabitacion.setBounds(142, 55, 121, 20);
 		frmCama.getContentPane().add(JCBHabitacion);
 	}
-	private JFrame frmCama;
+	public JFrame frmCama;
 	public JButton btnRegistrar= new JButton("REGISTRAR");
 	public JButton btnBuscar= new JButton("BUSCAR");
 	public JButton btnEliminar = new JButton("ELIMINAR");

@@ -10,6 +10,9 @@ import javax.swing.JTextField;
 import eam.desarrollo.hospital.controladores.controladorFarmacia;
 
 import javax.swing.JButton;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class ventanaFarmacia {
 
@@ -43,7 +46,7 @@ public class ventanaFarmacia {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -103,10 +106,19 @@ public class ventanaFarmacia {
 		
 		btnEliminar.setBounds(316, 170, 89, 23);
 		frame.getContentPane().add(btnEliminar);
+		
+		JMenuBar menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+		
+		JMenu mnReportes = new JMenu("Reportes");
+		menuBar.add(mnReportes);
+		
+		
+		mnReportes.add(mntmGenerarReporte);
 	}
 	
 	
-	private JFrame frame;
+	public JFrame frame = new JFrame();;
 	public controladorFarmacia micontroladorfarmacia;
 	public JButton btnRegistrar= new JButton("REGISTRAR");
 	public JButton btnBuscar= new JButton("BUSCAR");
@@ -116,4 +128,5 @@ public class ventanaFarmacia {
 	public JTextField JTFNombreFarmacia = new JTextField();
 	public JTextField JTFPersona = new JTextField();
 	public JTextField JTFTelefono = new JTextField();
+	public JMenuItem mntmGenerarReporte = new JMenuItem("Generar reporte");
 }

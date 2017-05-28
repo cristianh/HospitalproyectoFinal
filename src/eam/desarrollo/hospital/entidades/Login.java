@@ -16,7 +16,7 @@ public class Login {
 	
 	private String user;
 	
-	private char password;
+	private String password;
 	
 	private Boolean estado;
 	
@@ -37,7 +37,7 @@ public class Login {
 	 * @param estado
 	 * @param idTipoUsuario
 	 */
-	public Login(int idLogin, String user, char password, Boolean estado, TipoUsuario idTipoUsuario) {
+	public Login(int idLogin, String user, String password, Boolean estado, TipoUsuario idTipoUsuario) {
 		super();
 		this.idLogin = idLogin;
 		this.user = user;
@@ -46,17 +46,6 @@ public class Login {
 		this.idTipoUsuario = idTipoUsuario;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + idLogin;
-		result = prime * result + ((idTipoUsuario == null) ? 0 : idTipoUsuario.hashCode());
-		result = prime * result + password;
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
-	}
 	
 	
 
@@ -76,11 +65,11 @@ public class Login {
 		this.user = user;
 	}
 
-	public char getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(char password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -98,6 +87,18 @@ public class Login {
 
 	public void setIdTipoUsuario(TipoUsuario idTipoUsuario) {
 		this.idTipoUsuario = idTipoUsuario;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
+		result = prime * result + idLogin;
+		result = prime * result + ((idTipoUsuario == null) ? 0 : idTipoUsuario.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
 	}
 
 	@Override
@@ -121,7 +122,10 @@ public class Login {
 				return false;
 		} else if (!idTipoUsuario.equals(other.idTipoUsuario))
 			return false;
-		if (password != other.password)
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
 			return false;
 		if (user == null) {
 			if (other.user != null)

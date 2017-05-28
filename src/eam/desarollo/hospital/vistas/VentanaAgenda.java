@@ -30,19 +30,7 @@ import javax.swing.JScrollPane;
 
 public class VentanaAgenda {
 
-	private JFrame frmAgendaMedico;
-	public JTextField JTFIdagenda;
-	public JComboBox JCBMedicoagenda = new JComboBox();
-	public JButton btnRegistrar = new JButton("REGISTRAR");
-	public static controladorAgenda micontroladorAgenda;
-	public JButton btnBuscar = new JButton("BUSCAR");
-	public JButton btnEliminar = new JButton("ELIMINAR");
-	public JButton btnActualizar = new JButton("ACTUALIZAR");
-	public JDateChooser dateChooser = new JDateChooser();
-	public JSpinner JSPHora2 = new JSpinner();
-	public JSpinner JSPHora1 = new JSpinner();
-	private final JScrollPane scrollPane = new JScrollPane();
-	public  final JTable JTBAgenda = new JTable();
+	
 
 	/**
 	 * Launch the application.
@@ -192,4 +180,18 @@ public class VentanaAgenda {
 		groupLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnRegistrar, btnBuscar, btnEliminar, btnActualizar});
 		frmAgendaMedico.getContentPane().setLayout(groupLayout);
 	}
+	
+	public JFrame frmAgendaMedico;
+	public JTextField JTFIdagenda;
+	public JComboBox JCBMedicoagenda = new JComboBox();
+	public JButton btnRegistrar = new JButton("REGISTRAR");
+	public static controladorAgenda micontroladorAgenda;
+	public JButton btnBuscar = new JButton("BUSCAR");
+	public JButton btnEliminar = new JButton("ELIMINAR");
+	public JButton btnActualizar = new JButton("ACTUALIZAR");
+	public JDateChooser dateChooser = new JDateChooser();
+	public JSpinner JSPHora2 = new JSpinner();
+	public JSpinner JSPHora1 = new JSpinner();
+	private final JScrollPane scrollPane = new JScrollPane();
+	public  final JTable JTBAgenda = new JTable();
 }
